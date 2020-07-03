@@ -18,9 +18,9 @@ Quiz({@required this.questions, @required this.answerQuestion, @required this.qu
         Question(
           questions[questionsIndex]['questionText'],
         ),
-        ...(questions[questionsIndex]['answers'] as List<String>)
+        ...(questions[questionsIndex]['answers'] as List<Map<String, Object>>)
             .map((answer) {
-          return Answer(answerQuestion, answer);
+          return Answer(() => answerQuestion(answer['score']), answer['text']);
         }).toList()
       ],
     );
